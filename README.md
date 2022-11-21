@@ -64,7 +64,7 @@ commitlint 推荐我们使用 config-conventional 配置去写 commit
 | merge | 代码合并 |
 | perf | 优化相关，如提升性能、用户体验等。 |
 | refactor | 代码重构，没有新增功能或修复bug |
-| relase | 发布新版本 |
+| release | 发布新版本 |
 | revert | 版本回滚 |
 | style | 仅仅是对格式进行修改，如逗号、缩进、空格等。不改变代码逻辑。注意不是 css 修改。 |
 | sync | 同步主线或分支的Bug |
