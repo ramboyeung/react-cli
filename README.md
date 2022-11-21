@@ -2,7 +2,23 @@
 
 ## 代码规范（编码规范和代码提交规范）
 
-**本项目采用editorconfig、prettier、eslint约束编码规范，使用commitlint + husky来强制约束团队成员代码提交规范。**
+**本项目采用editorconfig、prettier、eslint约束编码规范，使用commitlint + husky来强制约束团队成员代码提交规范（未使用eslint）。**
+
+- 注意：eslint规范有可能会与prettier冲突，需要在.eslintrc.js中的rules做如下配置：
+```
+rules: {
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'indent': 0,
+    'space-before-function-paren': 0,
+    "vue/multi-word-component-names":"off"
+  }
+```
+
+eslint在webpack中怎么配置，可参考：http://t.zoukankan.com/maycpou-p-14540232.html
+
+react项目中怎么自行添加eslint，可参考：https://blog.csdn.net/formylovetm/article/details/126174042
+
 
 团队多人协同开发项目中困恼团队管理一个很大的问题是：无可避免地会出现每个开发者编码习惯不同、代码风格迥异，为了代码高可用、可维护性， 如何从项目管理上尽量统一和规范代码呢？
 借助于EditorConfig+Prettier+ESLint 的组合，项目中通过统一约定配置，可以在团队成员在代码开发过程中就检查、约束、美化代码，统一编码风格；且可以省去很多的沟通成本，提前暴露代码缺陷，减少后期二次修改代码的风险；
@@ -40,18 +56,18 @@ commitlint 推荐我们使用 config-conventional 配置去写 commit
 | 类型 | 描述 |
 | --- | --- |
 | build | 影响构建系统或外部依赖关系的更改（示例范围：gulp、broccoli、NPM）。 |
-| ==chore== | 其他修改,比如改变构建流程、或者增加依赖库、工具等(日常事务亦可) |
+| chore | 其他修改,比如改变构建流程、或者增加依赖库、工具等(日常事务亦可) |
 | ci | 更改持续集成文件和脚本（示例范围：Travis、Circle、BrowserStack、SauceLabs）。 |
-| ==docs== | 仅仅修改了文档，如readme.md |
-| ==feat== | 新增新特性、新功能 |
-| ==fix== | 产生diff并自动修复此问题。适合于一次提交直接修复问题（修复bug，可以是QA发现的BUG，也可以是研发自己发现的BUG）。|
-| ==merge== | 代码合并 |
-| ==perf== | 优化相关，如提升性能、用户体验等。 |
+| docs | 仅仅修改了文档，如readme.md |
+| feat | 新增新特性、新功能 |
+| fix | 产生diff并自动修复此问题。适合于一次提交直接修复问题（修复bug，可以是QA发现的BUG，也可以是研发自己发现的BUG）。|
+| merge | 代码合并 |
+| perf | 优化相关，如提升性能、用户体验等。 |
 | refactor | 代码重构，没有新增功能或修复bug |
 | relase | 发布新版本 |
-| ==revert== | 版本回滚 |
-| ==style== | 仅仅是对格式进行修改，如逗号、缩进、空格等。不改变代码逻辑。注意不是 css 修改。 |
-| ==sync== | 同步主线或分支的Bug |
+| revert | 版本回滚 |
+| style | 仅仅是对格式进行修改，如逗号、缩进、空格等。不改变代码逻辑。注意不是 css 修改。 |
+| sync | 同步主线或分支的Bug |
 | test | 测试用例，包括单元测试、集成测试。 |
 | to | 只产生diff不自动修复此问题。适合于多次提交。最终修复问题提交时使用fix。 |
 | workflow | 工作流相关文件更改 |
